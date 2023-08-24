@@ -18,13 +18,15 @@ function App() {
     return (
     <div className="App">
       <NavBar/>
-      {state.isLoading ? <h2>Loading</h2> : (
-          <Routes>
+      <div className='container'>
+        {state.isLoading ? <h2>Loading</h2> : (
+            <Routes>
               <Route path='/' element={<Home/>} />
               <Route path='/about' element={<About/>} />
               <Route path='/contact' element={<Contact/>} />
-          </Routes>
-      )}
+            </Routes>
+        )}
+      </div>
     </div>
   );
 }

@@ -15,7 +15,10 @@ const NavBar = () => {
 }
 const CustomLink = ({href, title}) => {
     const resolvedPath = useResolvedPath(href);
-    const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+    let isActive = useMatch({ path: resolvedPath.pathname, end: true });
+    if (resolvedPath.pathname === '/'){
+        isActive = false
+    }
     return (
         <Link to={resolvedPath} className={isActive ? 'active' : null}>{title}</Link>
     )
