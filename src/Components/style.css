@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+li, input {
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    padding: 20px;
+    width: 80%;
+    border-radius: 7px;
+    margin: 5px auto;
+    list-style-type: none;
+    transition: all 0.4s ease-in-out ;
+}
+li:nth-child(odd) {
+    background: lightgrey;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    background: #282c34;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+}
+nav div {
+    padding: 20px;
+}
+nav a.active {
+    background: lightgrey;
+}

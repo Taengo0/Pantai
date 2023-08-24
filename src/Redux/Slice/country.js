@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 // action
-export const fetchTodos = createAsyncThunk('fetchTodos', async () => {
+export const fetchCountry = createAsyncThunk('fetchCountry', async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos');
     return response.json();
 });
@@ -14,14 +14,14 @@ const todoSlice = createSlice({
         isError: false,
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchTodos.pending, (state, action) => {
+        builder.addCase(fetchCountry.pending, (state, action) => {
             state.isLoading = true;
         })
-        builder.addCase(fetchTodos.fulfilled, (state, action) => {
+        builder.addCase(fetchCountry.fulfilled, (state, action) => {
             state.isLoading = false;
             state.data = action.payload;
         })
-        builder.addCase(fetchTodos.rejected, (state, action) => {
+        builder.addCase(fetchCountry.rejected, (state, action) => {
             console.log("Error", action.payload);
             state.isError = true;
         })
