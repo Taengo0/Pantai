@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import {useDispatch, useSelector} from "react-redux";
+import {fetchTodos} from "./Redux/Slice/todo";
 import './App.css';
+import About from "./Components/About";
+import {useEffect} from "react";
+import NavBar from "./Components/NavBar";
+import Home from "./Components/Home";
+import { Route, Routes } from "react-router-dom";
+import Contact from "./Components/Contact";
 
 function App() {
-  return (
+  const dispatch = useDispatch();
+  const state = useSelector(state => state.todo);
+    useEffect(() => {
+        dispatch(fetchTodos());
+        // dispatch();
+    }, [dispatch]);
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar/>
+      {state.isLoading ? <h2>Loading</h2> : (
+          <Routes>
+              <Route path='/' element={<Home/>} />
+              <Route path='/about' element={<About/>} />
+              <Route path='/contact' element={<Contact/>} />
+          </Routes>
+      )}
     </div>
   );
 }
