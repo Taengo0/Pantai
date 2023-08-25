@@ -1,20 +1,12 @@
-import {useState} from "react";
-
-const Dropdown = ({ data }) => {
-    const [selectedValue, setSelectedValue] = useState('Laura')
-    const dropdownHandler = (e) => {
-        setSelectedValue(e.target.value)
-    }
-
-    const layout = data.map(item => (<option key={item.id} value={item.firstname}>{item.firstname} {item.lastname}</option>));
+const Dropdown = ({ data, selectedValue, dropdownHandler }) => {
+    const layout = data.map(item => (<option key={item}>{item}</option>));
 
   return (
       <>
-        <label>Choose a name</label>
+        <div>Choose currency</div>
         <select defaultValue={selectedValue} name="cars" id="cars" onChange={(e) => dropdownHandler(e)}>
             {layout}
         </select>
-          <div>{selectedValue}</div>
       </>
   )
 }
