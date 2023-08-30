@@ -18,7 +18,7 @@ function About() {
             <div>
                 <input name="search" value={value} onChange={(event) => handleChange(event)}/>
             </div>
-            {data?.map(item => <li key={item.id}>{item.title}</li>)}
+            {data?.length ? data.map(item => <li key={item.id}>{item.title}</li>) : <h3>No data found..</h3>}
         </div>
     );
 }

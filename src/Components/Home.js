@@ -28,7 +28,6 @@ ChartJS.register(
 
 const Home = () => {
     const users= useFetch('https://jsonplaceholder.org/users');
-    const { data, loading } = useFetch('https://api.frankfurter.app/2010-01-01..2010-01-31');
     const [selectedValue, setSelectedValue] = useState('MYR')
     const [graphData, setGraphData] = useState({});
     const [graphOptions] = useState({
@@ -39,6 +38,11 @@ const Home = () => {
             }
         },
     });
+    const [detailsValue, setDetailsValue] = useState({
+        dateFrom : '2023-08-09',
+        dateTo : '2023-08-30',
+    });
+    const { data, loading } = useFetch(`https://api.frankfurter.app/${detailsValue.dateFrom}..${detailsValue.dateTo}`);
 
     const { rates } = data;
     const arr = [];
@@ -65,9 +69,16 @@ const Home = () => {
                 }
             ],
         });
+        // eslint-disable-next-line
     }, [selectedValue, rates]);
     const dropdownHandler = (e) => {
         setSelectedValue(e.target.value)
+    }
+
+    const detailsHandler = (e) => {
+        setDetailsValue((prevState) => {
+            return {...prevState, [e.target.name]: e.target.value}
+        })
     }
 
     return (
@@ -76,6 +87,7 @@ const Home = () => {
                 <div>
                     <Dropdown data={Object.keys(grphData[0])} selectedValue={selectedValue}  dropdownHandler={dropdownHandler}/>
                     {/*<DatePickerWithRange />*/}
+                    <div><input type={"date"} onChange={detailsHandler} value={detailsValue.dateFrom} name='dateFrom'/> to <input type="date" onChange={detailsHandler} value={detailsValue.dateTo} name='dateTo'/></div>
                     {loading ? <h3>Loading graph data..</h3> : <div><Line options={graphOptions} data={graphData} /></div>}
                 </div>
             }

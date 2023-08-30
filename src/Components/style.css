@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
 }
-li, input {
+li, .listContainer input {
     box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
     padding: 20px;
     width: 80%;
