@@ -13,7 +13,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import {DatePickerWithRange} from "./DateRangePicker";
+// import {DatePickerWithRange} from "./DateRangePicker";
 
 ChartJS.register(
     CategoryScale,
@@ -29,20 +29,16 @@ ChartJS.register(
 const Home = () => {
     const users= useFetch('https://jsonplaceholder.org/users');
     const { data, loading } = useFetch('https://api.frankfurter.app/2010-01-01..2010-01-31');
+    const [selectedValue, setSelectedValue] = useState('MYR')
     const [graphData, setGraphData] = useState({});
     const [graphOptions] = useState({
         responsive: true,
         plugins: {
             legend: {
                 position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Chart.js Line Chart',
-            },
+            }
         },
     });
-    const [selectedValue, setSelectedValue] = useState('MYR')
 
     const { rates } = data;
     const arr = [];
@@ -51,6 +47,7 @@ const Home = () => {
     grphData.forEach((value) => {
         arr.push(value[selectedValue])
     });
+
     useEffect(() => {
         setGraphData({
             labels: labels,
@@ -60,15 +57,15 @@ const Home = () => {
                         intersect: false,
                     },
                     fill: true,
-                    label: 'Dataset 1',
+                    label: 'Currency',
                     data: arr,
-                    borderColor: 'rgb(255, 99, 132)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgb(210, 145, 188)',
+                    backgroundColor: 'rgb(224, 187, 228)',
                     tension: 0.4
                 }
             ],
         });
-    }, [selectedValue]);
+    }, [selectedValue, rates]);
     const dropdownHandler = (e) => {
         setSelectedValue(e.target.value)
     }
@@ -79,7 +76,7 @@ const Home = () => {
                 <div>
                     <Dropdown data={Object.keys(grphData[0])} selectedValue={selectedValue}  dropdownHandler={dropdownHandler}/>
                     {/*<DatePickerWithRange />*/}
-                    {loading ? <h3>Loading graph data..</h3> : <Line options={graphOptions} data={graphData} />}
+                    {loading ? <h3>Loading graph data..</h3> : <div><Line options={graphOptions} data={graphData} /></div>}
                 </div>
             }
         </>);
