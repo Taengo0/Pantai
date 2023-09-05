@@ -8,7 +8,7 @@ const NavBar = () => {
             </div>
             <div>
                 <CustomLink href={'/about'} title={'About'}/>
-                <CustomLink href={'/contact'} title={'Contact'}/>
+                <CustomLink href={'/contact'} title={'Nuyul'}/>
             </div>
         </nav>
     );

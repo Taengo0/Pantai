@@ -39,8 +39,8 @@ const Home = () => {
         },
     });
     const [detailsValue, setDetailsValue] = useState({
-        dateFrom : '2023-08-09',
-        dateTo : '2023-08-30',
+        dateFrom : '2023-07-01',
+        dateTo : new Date().toISOString().substring(0, 10),
     });
     const { data, loading } = useFetch(`https://api.frankfurter.app/${detailsValue.dateFrom}..${detailsValue.dateTo}`);
 

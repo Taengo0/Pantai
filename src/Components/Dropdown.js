@@ -3,7 +3,7 @@ const Dropdown = ({ data, selectedValue, dropdownHandler }) => {
 
   return (
       <>
-        <div>Choose currency</div>
+        <div className="pd20">Choose currency</div>
         <select defaultValue={selectedValue} name="cars" id="cars" onChange={(e) => dropdownHandler(e)}>
             {layout}
         </select>
