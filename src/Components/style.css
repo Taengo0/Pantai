@@ -19,18 +19,20 @@ li:nth-child(odd) {
 nav {
   display: flex;
   justify-content: space-between;
-  background: #282c34;
+  background: transparent;
+  margin: 0 20px;
 }
 nav a {
-  color: white;
+  color: #282c34;
   text-decoration: none;
-  padding: 20px;
+  padding: 5px 20px;
 }
 nav div {
   padding: 20px 0;
 }
 nav a.active {
-  background: lightgrey;
+  /*background: rgba(0, 0, 0, 0.5);*/
+  /*border-radius: 50px;*/
 }
 select {
   width: 300px;
@@ -75,11 +77,11 @@ select {
   object-fit: cover;
 }
 .formContainer {
-  display: flex;
+  /*display: flex;*/
   justify-content: space-evenly;
   background: white;
-  padding: 40px;
-  width: 700px;
+  /*padding: 40px;*/
+  /*width: 700px;*/
   margin: auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   border-radius: 8px;
@@ -90,7 +92,8 @@ select {
 .formContainer input {
   border: none;
   outline: none;
-  width: 250px;
+  /*width: 250px;*/
+  width: 100%;
   border-bottom: 2px solid rgba(0, 0, 0, 0.24);
   background: transparent;
 }
