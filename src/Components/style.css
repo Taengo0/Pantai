@@ -1,12 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 
-html {
-    scroll-snap-type: y mandatory;
+*::before, *::after, * {
+    box-sizing: border-box;
 }
 
 * {
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-snap-type: y mandatory;
 }
 
 section {
@@ -36,8 +41,10 @@ nav {
     display: flex;
     justify-content: space-between;
     background: transparent;
-    margin: 0 20px;
+    /*margin: 0 20px;*/
     position: fixed;
+    /*backdrop-filter: blur(8px);*/
+    width: 100%;
 }
 
 nav a {
@@ -127,4 +134,8 @@ select {
     width: 100%;
     border-bottom: 2px solid rgba(0, 0, 0, 0.24);
     background: transparent;
+}
+
+.formContainer div {
+    padding: 20px;
 }
